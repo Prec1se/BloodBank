@@ -27,7 +27,7 @@
 
         <TextView
             android:id="@+id/title"
-            android:text="Blood Donation App"
+            android:text="BloodHub"
             android:textColor="#000"
             android:textSize="30sp"
             android:textStyle="bold"
