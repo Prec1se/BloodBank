@@ -11,7 +11,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:elevation="10dp"
         app:cardCornerRadius="10dp"
         app:cardElevation="10dp"
@@ -61,16 +61,82 @@
                 android:orientation="vertical"
                 android:layout_marginBottom="20dp"/>
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profile_image"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:src="@drawable/profile"
-                app:civ_border_width="2dp"
+<!--            <de.hdodenhof.circleimageview.CircleImageView-->
+<!--                android:id="@+id/profile_image"-->
+<!--                android:layout_width="150dp"-->
+<!--                android:layout_height="150dp"-->
+<!--                android:src="@drawable/profile"-->
+<!--                app:civ_border_width="2dp"-->
+<!--                android:layout_gravity="center"-->
+<!--                app:civ_border_color="#FF000000"/>-->
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/TextInputLayoutStyle"
+                app:boxStrokeColor="@color/black"
+                app:hintTextAppearance="@color/colorPrimary"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/fullName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Your Name"
+                    android:drawablePadding="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textColorHint="@color/black"
+                    android:drawableStart="@drawable/ic_person">
+                </com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/TextInputLayoutStyle"
+                app:boxStrokeColor="@color/black"
+                app:hintTextAppearance="@color/colorPrimary"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/registerEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Your Email Address"
+                    android:inputType="textEmailAddress"
+                    android:drawablePadding="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textColorHint="@color/black"
+                    android:drawableStart="@drawable/ic_email">
+                </com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/registerButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Register"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:textAllCaps="false"
                 android:layout_gravity="center"
-                app:civ_border_color="#FF000000"/>
+                android:background="@drawable/buttons_background"
+                android:padding="10dp"
+                android:layout_marginTop="60dp"/>
 
-
+            <TextView
+                android:id="@+id/backButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Already registered? Sign in"
+                android:textSize="18dp"
+                android:clickable="true"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="10dp"
+                android:layout_marginTop="40dp" />
 
         </LinearLayout>
 
