@@ -111,6 +111,48 @@
                 </com.google.android.material.textfield.TextInputEditText>
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/TextInputLayoutStyle"
+                app:boxStrokeColor="@color/black"
+                app:hintTextAppearance="@color/colorPrimary"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Give it a password"
+                    android:inputType="textPassword"
+                    android:drawablePadding="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textColorHint="@color/black"
+                    android:drawableStart="@drawable/ic_key">
+                </com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/TextInputLayoutStyle"
+                app:boxStrokeColor="@color/black"
+                app:hintTextAppearance="@color/colorPrimary"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/confirmPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Confirm Password"
+                    android:inputType="textPassword"
+                    android:drawablePadding="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textColorHint="@color/black"
+                    android:drawableStart="@drawable/ic_lock">
+                </com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
+
             <Button
                 android:id="@+id/registerButton"
                 android:layout_width="wrap_content"
@@ -122,20 +164,20 @@
                 android:layout_gravity="center"
                 android:background="@drawable/buttons_background"
                 android:padding="10dp"
-                android:layout_marginTop="60dp"/>
+                android:layout_marginTop="30dp"/>
 
             <TextView
                 android:id="@+id/backButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Already registered? Sign in"
-                android:textSize="18dp"
+                android:textSize="15dp"
                 android:clickable="true"
                 android:textColor="@color/black"
                 android:textStyle="bold"
-                android:layout_gravity="center"
+                android:layout_gravity="end"
                 android:gravity="center"
-                android:padding="10dp"
+                android:padding="5dp"
                 android:layout_marginTop="40dp" />
 
         </LinearLayout>
