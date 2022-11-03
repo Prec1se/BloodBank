@@ -8,9 +8,11 @@
         <entry key="app/src/main/res/drawable/ic_baseline_lock_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_email.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_key.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_lock.xml" value="0.2035" />
         <entry key="app/src/main/res/drawable/ic_person.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_phone.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.23140495867768596" />
+        <entry key="app/src/main/res/layout/activity_profile_setup.xml" value="0.24864130434782608" />
         <entry key="app/src/main/res/layout/activity_registration.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_select_registration.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.1" />

@@ -7,9 +7,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class RegistrationActivity extends AppCompatActivity {
 
     private TextView backButton;
+    FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
