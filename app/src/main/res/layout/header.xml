@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:paddingTop="5dp"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:background="@drawable/header_background"
+    android:layout_width="match_parent"
+    android:layout_height="210dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="95dp"
+        android:layout_height="95dp"
+        android:id="@+id/nav_user_image"
+        android:src="@drawable/profile"/>
+
+    <TextView
+        android:id="@+id/nav_user_email"
+        android:text="example@gmail.com"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/nav_user_bloodGroup"
+        android:text="Blood Group"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
