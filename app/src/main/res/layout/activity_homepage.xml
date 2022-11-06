@@ -45,6 +45,7 @@
     <com.google.android.material.navigation.NavigationView
         app:headerLayout="@layout/header"
         app:menu="@menu/home_menu"
+        android:layout_gravity="start"
         app:itemIconTint="@drawable/navigation_selector"
         app:itemTextColor="@drawable/navigation_view_item_selector"
         android:id="@+id/nav_view"

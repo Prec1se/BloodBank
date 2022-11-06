@@ -399,7 +399,7 @@ public class RegistrationActivity extends AppCompatActivity {
             return;
         }
 
-        if (cp != p) {
+        if (!cp.equals(p)) {
             confirmPassword.setError("Passwords does not match");
             confirmPassword.requestFocus();
             return;
@@ -443,7 +443,7 @@ public class RegistrationActivity extends AppCompatActivity {
                         user.put("name",n);
                         user.put("email",e);
                         user.put("phone",pn);
-                        user.put("blood group", bg);
+                        user.put("bloodgroup", bg);
                         user.put("division", l);
 
                         documentReference.set(user).addOnSuccessListener(unused ->
