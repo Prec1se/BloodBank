@@ -1,5 +1,7 @@
 package com.example.bloodhub;
 
+import static com.example.bloodhub.HomepageActivity.getBitmapFromURL;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +22,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import org.w3c.dom.Text;
 
@@ -32,6 +39,9 @@ public class ProfileActivity extends AppCompatActivity {
     private CircleImageView profileImage;
     private Button backButton;
     private Uri resultUri;
+    private FirebaseFirestore fstore;
+    private FirebaseAuth firebaseAuth;
+    String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,29 +60,53 @@ public class ProfileActivity extends AppCompatActivity {
         phoneNumber = findViewById(R.id.phoneNumber);
         backButton = findViewById(R.id.backButton);
         profileImage = findViewById(R.id.profile_image);
+        fstore = FirebaseFirestore.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
+        userId = firebaseAuth.getCurrentUser().getUid();
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference()
-                .child("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-
-        reference.addValueEventListener(new ValueEventListener() {
+        DocumentReference documentReference = fstore.collection("users").document(userId);
+        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()) {
-                    name.setText(snapshot.child("name").getValue().toString());
-                    email.setText(snapshot.child("email").getValue().toString());
-                    bloodGroup.setText(snapshot.child("bloodgroup").getValue().toString());
-                    phoneNumber.setText(snapshot.child("phone").getValue().toString());
-
-                    String imageUrl = snapshot.child("profilepictureurl").getValue().toString();
-                    Glide.with(getApplicationContext()).load(imageUrl).into(profileImage);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                name.setText(value.getString("name"));
+                email.setText(value.getString("email"));
+                bloodGroup.setText(value.getString("bloodgroup"));
+//                profileImage.setImageBitmap(getBitmapFromURL(value.getString("profilepictureurl")));
+//                if(value.hasChild("profilepictureurl")) {
+//                        String imageUrl = snapshot.child("profilepictureurl").getValue().toString();
+//                        Glide.with(getApplicationContext()).load(imageUrl).into(nav_profile_image);
+//                    }
+//                    else {
+//                        nav_profile_image.setImageResource(R.drawable.profile);
+//                    }
+//
+//                    String phoneNumber = snapshot.child("phone").getValue().toString();
+//                    nav_phone_number.setText(phoneNumber);
             }
         });
+
+//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference()
+//                .child("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+
+//        reference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                if(snapshot.exists()) {
+//                    name.setText(snapshot.child("name").getValue().toString());
+//                    email.setText(snapshot.child("email").getValue().toString());
+//                    bloodGroup.setText(snapshot.child("bloodgroup").getValue().toString());
+//                    phoneNumber.setText(snapshot.child("phone").getValue().toString());
+//
+//                    String imageUrl = snapshot.child("profilepictureurl").getValue().toString();
+//                    Glide.with(getApplicationContext()).load(imageUrl).into(profileImage);
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
 
 //        profileImage.setOnClickListener(new View.OnClickListener() {
 //            @Override

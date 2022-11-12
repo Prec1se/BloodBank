@@ -1,59 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:id="@+id/home"
-        android:icon="@drawable/ic_myfeed"
-        android:title="Home"/>
+<!--    <item-->
+<!--        android:id="@+id/home"-->
+<!--        android:icon="@drawable/ic_myfeed"-->
+<!--        android:title="Home"/>-->
 
-    <item
-        android:id="@+id/sentEmail"
-        android:icon="@drawable/ic_check"
-        android:title="Email"/>
+<!--    <item-->
+<!--        android:id="@+id/sentEmail"-->
+<!--        android:icon="@drawable/ic_check"-->
+<!--        android:title="Email"/>-->
 
-    <item
-        android:id="@+id/compatible"
-        android:icon="@drawable/compatible"
-        android:title="Home"/>
+<!--    <item-->
+<!--        android:id="@+id/compatible"-->
+<!--        android:icon="@drawable/compatible"-->
+<!--        android:title="Home"/>-->
 
-    <item android:title="Blood Groups">
-        <menu>
-            <group android:checkableBehavior="single">
-                <item
-                    android:id="@+id/aplus"
-                    android:icon="@drawable/aplus"
-                    android:title="A+"/>
-                <item
-                    android:id="@+id/aminus"
-                    android:icon="@drawable/aminus"
-                    android:title="A-"/>
-                <item
-                    android:id="@+id/bplus"
-                    android:icon="@drawable/bplus"
-                    android:title="B+"/>
-                <item
-                    android:id="@+id/bminus"
-                    android:icon="@drawable/bminus"
-                    android:title="B-"/>
-                <item
-                    android:id="@+id/abplus"
-                    android:icon="@drawable/abplus"
-                    android:title="AB+"/>
-                <item
-                    android:id="@+id/abminus"
-                    android:icon="@drawable/abminus"
-                    android:title="AB-"/>
-                <item
-                    android:id="@+id/oplus"
-                    android:icon="@drawable/oplus"
-                    android:title="O+"/>
-                <item
-                    android:id="@+id/ominus"
-                    android:icon="@drawable/ominus"
-                    android:title="O-"/>
-            </group>
-        </menu>
-    </item>
+<!--    <item android:title="Blood Groups">-->
+<!--        <menu>-->
+<!--            <group android:checkableBehavior="single">-->
+<!--                <item-->
+<!--                    android:id="@+id/aplus"-->
+<!--                    android:icon="@drawable/aplus"-->
+<!--                    android:title="A+"/>-->
+<!--                <item-->
+<!--                    android:id="@+id/aminus"-->
+<!--                    android:icon="@drawable/aminus"-->
+<!--                    android:title="A-"/>-->
+<!--                <item-->
+<!--                    android:id="@+id/bplus"-->
+<!--                    android:icon="@drawable/bplus"-->
+<!--                    android:title="B+"/>-->
+<!--                <item-->
+<!--                    android:id="@+id/bminus"-->
+<!--                    android:icon="@drawable/bminus"-->
+<!--                    android:title="B-"/>-->
+<!--                <item-->
+<!--                    android:id="@+id/abplus"-->
+<!--                    android:icon="@drawable/abplus"-->
+<!--                    android:title="AB+"/>-->
+<!--                <item-->
+<!--                    android:id="@+id/abminus"-->
+<!--                    android:icon="@drawable/abminus"-->
+<!--                    android:title="AB-"/>-->
+<!--                <item-->
+<!--                    android:id="@+id/oplus"-->
+<!--                    android:icon="@drawable/oplus"-->
+<!--                    android:title="O+"/>-->
+<!--                <item-->
+<!--                    android:id="@+id/ominus"-->
+<!--                    android:icon="@drawable/ominus"-->
+<!--                    android:title="O-"/>-->
+<!--            </group>-->
+<!--        </menu>-->
+<!--    </item>-->
 
     <item android:title="Actions">
         <menu>
