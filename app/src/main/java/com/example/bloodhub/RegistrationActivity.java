@@ -434,57 +434,57 @@ public class RegistrationActivity extends AppCompatActivity {
         pd.setMessage("Please wait...");
         pd.show();
 
-//        mAuth.createUserWithEmailAndPassword(e, p)
-//                .addOnCompleteListener(this, task -> {
-//                    if (task.isSuccessful()) {
-//                        FirebaseUser firebaseUser = mAuth.getCurrentUser();
-//                        assert firebaseUser != null;
+        mAuth.createUserWithEmailAndPassword(e, p)
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        FirebaseUser firebaseUser = mAuth.getCurrentUser();
+                        assert firebaseUser != null;
+
+//                        firebaseUser.sendEmailVerification().addOnCompleteListener(task1 -> {
+//                            if(task1.isSuccessful()){
 //
-////                        firebaseUser.sendEmailVerification().addOnCompleteListener(task1 -> {
-////                            if(task1.isSuccessful()){
-////
-////                                Toast.makeText(RegistrationActivity.this, "Check email to verify your account", Toast.LENGTH_LONG).show();
-////                                //                        redirect to login page
-////                                FirebaseAuth.getInstance().signOut();
-////                                startActivity(new Intent(RegistrationActivity.this, LoginActivity.class));
-////                                finish();
-////                            }
-////                            else
-////                            {
-////                                // email not sent, so display message and restart the activity or do whatever you wish to do
-////                                Toast.makeText(RegistrationActivity.this, task1.getException().getMessage(), Toast.LENGTH_LONG).show();
-////                                //restart this activity
-////                                overridePendingTransition(0, 0);
-////                                finish();
-////                                overridePendingTransition(0, 0);
-////                                startActivity(getIntent());
-////                            }
-////                        });
-//
-//                        userID = mAuth.getCurrentUser().getUid();
-//
-//                        DocumentReference documentReference = fstore.collection("users").document(userID);
-//                        Map<String,Object>user = new HashMap<>();
-//                        user.put("name",n);
-//                        user.put("email",e);
-//                        user.put("phone",pn);
-//                        user.put("bloodgroup", bg);
-//                        user.put("division", l);
-//                        user.put("available", false);
-//
-//                        documentReference.set(user).addOnSuccessListener(unused ->
-//                                        Log.d(TAG, "user profile is created for " + userID))
-//                                .addOnFailureListener(ex ->
-//                                        Log.d(TAG, ex.toString()));
-//                        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-//
-//                    } else {
-//                        Toast.makeText(RegistrationActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
-//                    }
-//                    pd.dismiss();
-//
-//                });
-        addDatatoFirebase(n, pn, e, bg, l);
+//                                Toast.makeText(RegistrationActivity.this, "Check email to verify your account", Toast.LENGTH_LONG).show();
+//                                //                        redirect to login page
+//                                FirebaseAuth.getInstance().signOut();
+//                                startActivity(new Intent(RegistrationActivity.this, LoginActivity.class));
+//                                finish();
+//                            }
+//                            else
+//                            {
+//                                // email not sent, so display message and restart the activity or do whatever you wish to do
+//                                Toast.makeText(RegistrationActivity.this, task1.getException().getMessage(), Toast.LENGTH_LONG).show();
+//                                //restart this activity
+//                                overridePendingTransition(0, 0);
+//                                finish();
+//                                overridePendingTransition(0, 0);
+//                                startActivity(getIntent());
+//                            }
+//                        });
+
+                        userID = mAuth.getCurrentUser().getUid();
+
+                        DocumentReference documentReference = fstore.collection("users").document(userID);
+                        Map<String,Object>user = new HashMap<>();
+                        user.put("name",n);
+                        user.put("email",e);
+                        user.put("phone",pn);
+                        user.put("bloodgroup", bg);
+                        user.put("division", l);
+                        user.put("available", false);
+
+                        documentReference.set(user).addOnSuccessListener(unused ->
+                                        Log.d(TAG, "user profile is created for " + userID))
+                                .addOnFailureListener(ex ->
+                                        Log.d(TAG, ex.toString()));
+                        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+
+                    } else {
+                        Toast.makeText(RegistrationActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                    pd.dismiss();
+
+                });
+//        addDatatoFirebase(n, pn, e, bg, l);
     }
 
     private void addDatatoFirebase(String n, String pn, String e, String bg, String l) {
