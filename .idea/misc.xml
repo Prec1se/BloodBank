@@ -7,11 +7,17 @@
         <entry key="app/src/main/res/drawable/buttons_background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/header_background.xml" value="0.25" />
         <entry key="app/src/main/res/drawable/ic_about.xml" value="0.293" />
+        <entry key="app/src/main/res/drawable/ic_back.xml" value="0.267" />
         <entry key="app/src/main/res/drawable/ic_baseline_dynamic_feed_24.xml" value="0.302" />
         <entry key="app/src/main/res/drawable/ic_baseline_lock_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_notifications_24.xml" value="0.227" />
         <entry key="app/src/main/res/drawable/ic_check.xml" value="0.302" />
+        <entry key="app/src/main/res/drawable/ic_copy.xml" value="0.3255" />
+        <entry key="app/src/main/res/drawable/ic_drop.xml" value="0.293" />
+        <entry key="app/src/main/res/drawable/ic_edit.xml" value="0.3255" />
         <entry key="app/src/main/res/drawable/ic_email.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_feedback.xml" value="0.3255" />
+        <entry key="app/src/main/res/drawable/ic_help.xml" value="0.3255" />
         <entry key="app/src/main/res/drawable/ic_key.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_letter.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_lock.xml" value="0.2035" />
@@ -19,9 +25,13 @@
         <entry key="app/src/main/res/drawable/ic_myfeed.xml" value="0.293" />
         <entry key="app/src/main/res/drawable/ic_person.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_phone.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_refresh.xml" value="0.293" />
+        <entry key="app/src/main/res/drawable/ic_search.xml" value="0.293" />
         <entry key="app/src/main/res/drawable/ic_share.xml" value="0.293" />
         <entry key="app/src/main/res/drawable/navigation_selector.xml" value="0.293" />
         <entry key="app/src/main/res/drawable/navigation_view_item_selector.xml" value="0.293" />
+        <entry key="app/src/main/res/layout/activity_availability_check.xml" value="0.35572916666666665" />
+        <entry key="app/src/main/res/layout/activity_donate.xml" value="0.35572916666666665" />
         <entry key="app/src/main/res/layout/activity_homepage.xml" value="0.35572916666666665" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.35572916666666665" />
@@ -29,7 +39,9 @@
         <entry key="app/src/main/res/layout/activity_registration.xml" value="0.24342105263157895" />
         <entry key="app/src/main/res/layout/activity_search.xml" value="0.21041666666666667" />
         <entry key="app/src/main/res/layout/activity_select_registration.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_set_status.xml" value="0.26403985507246375" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/custom_dialog.xml" value="0.3359375" />
         <entry key="app/src/main/res/layout/dropdown_item.xml" value="0.17249240121580547" />
         <entry key="app/src/main/res/layout/header.xml" value="0.325" />
         <entry key="app/src/main/res/layout/list_item.xml" value="0.17249240121580547" />

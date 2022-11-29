@@ -7,12 +7,15 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -35,7 +38,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ProfileActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
-    private TextView name, email, bloodGroup, phoneNumber;
+    private TextView name, email, bloodGroup, phoneNumber, location;
     private CircleImageView profileImage;
     private Button backButton;
     private Uri resultUri;
@@ -57,7 +60,8 @@ public class ProfileActivity extends AppCompatActivity {
         name = findViewById(R.id.name);
         email = findViewById(R.id.email);
         bloodGroup = findViewById(R.id.bloodGroup);
-        phoneNumber = findViewById(R.id.phoneNumber);
+        phoneNumber = findViewById(R.id.phone);
+        location = findViewById(R.id.location);
         backButton = findViewById(R.id.backButton);
         profileImage = findViewById(R.id.profile_image);
         fstore = FirebaseFirestore.getInstance();
@@ -71,6 +75,9 @@ public class ProfileActivity extends AppCompatActivity {
                 name.setText(value.getString("name"));
                 email.setText(value.getString("email"));
                 bloodGroup.setText(value.getString("bloodgroup"));
+                phoneNumber.setText(value.getString("phone"));
+                location.setText(value.getString("division"));
+
 //                profileImage.setImageBitmap(getBitmapFromURL(value.getString("profilepictureurl")));
 //                if(value.hasChild("profilepictureurl")) {
 //                        String imageUrl = snapshot.child("profilepictureurl").getValue().toString();
@@ -120,11 +127,12 @@ public class ProfileActivity extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ProfileActivity.this, HomepageActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(ProfileActivity.this, HomepageActivity.class);
+//                startActivity(intent);
                 finish();
             }
         });
+
     }
 
     @Override
@@ -138,6 +146,12 @@ public class ProfileActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    private void showCustomDialog() {
+        final Dialog dialog = new Dialog(ProfileActivity.this);
+
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

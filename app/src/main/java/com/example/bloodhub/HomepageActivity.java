@@ -3,6 +3,7 @@ package com.example.bloodhub;
 import static android.content.ContentValues.TAG;
 import static com.example.bloodhub.SplashScreenActivity.setWindowFlag;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -17,6 +18,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -33,6 +35,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.bloodhub.Adapter.UserAdapter;
 import com.example.bloodhub.Model.User;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -87,14 +90,14 @@ public class HomepageActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
 //
-//        setWindowFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, false);
-//        getWindow().setStatusBarColor(Color.TRANSPARENT);
+        setWindowFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, false);
+        getWindow().setStatusBarColor(Color.TRANSPARENT);
         setContentView(R.layout.activity_homepage);
 
         toolbar = findViewById(R.id.toolbar);
@@ -245,6 +248,8 @@ public class HomepageActivity extends AppCompatActivity
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 userList.clear();
                 for(DocumentSnapshot documentSnapshot : value.getDocuments()) {
+                    if(documentSnapshot.getId() == userId)
+                        continue;
                     User user = new User();
                     user.setAvailable(true);
                     user.setBloodgroup(documentSnapshot.get("bloodgroup").toString());
@@ -253,14 +258,14 @@ public class HomepageActivity extends AppCompatActivity
                     user.setPhonenumber(documentSnapshot.get("phone").toString());
                     user.setName(documentSnapshot.get("name").toString());
                     userList.add(user);
-                    Toast.makeText(HomepageActivity.this, "User available", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(HomepageActivity.this, "User available", Toast.LENGTH_SHORT).show();
                 }
                 userAdapter.notifyDataSetChanged();
-//                progressBar.setVisibility(View.GONE);
+                progressBar.setVisibility(View.GONE);
 
                 if(userList.isEmpty()) {
                     Toast.makeText(HomepageActivity.this, "No available users", Toast.LENGTH_SHORT).show();
-//                    progressBar.setVisibility(View.GONE);
+                    progressBar.setVisibility(View.GONE);
                 }
             }
         });
@@ -290,14 +295,38 @@ public class HomepageActivity extends AppCompatActivity
         switch(item.getItemId()) {
             case R.id.profile:
                 startActivity(new Intent(HomepageActivity.this, ProfileActivity.class));
-                finish();
+//                finish();
+                break;
             case R.id.logout:
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(HomepageActivity.this, LoginActivity.class));
-                finish();
-
+//                finish();
+                break;
+            case R.id.status:
+                startActivity(new Intent(HomepageActivity.this, SetStatusActivity.class));
+//                finish();
+                break;
+            case R.id.search:
+                startActivity(new Intent(HomepageActivity.this, SearchActivity.class));
+//                finish();
+                break;
+            case R.id.help:
+                startActivity(new Intent(HomepageActivity.this, DonateActivity.class));
+//                finish();
+                break;
+            case R.id.feedback:
+                sendFeedback();
+                break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return false;
+    }
+
+    private void sendFeedback() {
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        String UriText = "mailto:" + Uri.encode("imainul494@gmail.com") + "?subject=" + Uri.encode("") + Uri.encode("");
+        Uri uri = Uri.parse(UriText);
+        intent.setData(uri);
+        startActivity(Intent.createChooser(intent,"send email"));
     }
 }

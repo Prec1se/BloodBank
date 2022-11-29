@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:id="@+id/mainLayout"
@@ -29,7 +29,7 @@
 
             <TextView
                 android:id="@+id/name"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:textAllCaps="false"
@@ -39,17 +39,18 @@
 
             <TextView
                 android:id="@+id/email"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:textAllCaps="false"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:autoLink="email"/>
 
             <TextView
                 android:id="@+id/bloodGroup"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:textAllCaps="true"
@@ -58,14 +59,26 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/phoneNumber"
-                android:layout_width="match_parent"
+                android:id="@+id/division"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:textAllCaps="true"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/phoneNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:autoLink="phone"/>
+
         </LinearLayout>
 
         <Button
@@ -79,6 +92,8 @@
             android:textAllCaps="false" />
 
 
+
+
     </LinearLayout>
 
     <View
@@ -87,6 +102,6 @@
         android:layout_below="@id/mainLayout"
         android:layout_marginStart="10dp"
         android:layout_marginTop="4dp"
-        android:background="@color/black"/>
+        android:background="@color/black" />
 
 </RelativeLayout>

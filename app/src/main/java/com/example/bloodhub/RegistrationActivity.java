@@ -29,6 +29,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.bloodhub.Model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -36,8 +37,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
@@ -72,6 +76,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private String userID;
     private FirebaseStorage firebaseStorage;
     private StorageReference storageReference;
+    User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -395,6 +400,18 @@ public class RegistrationActivity extends AppCompatActivity {
             return;
         }
 
+        if(bg.isEmpty()) {
+            bloodGroup.setError("Select your blood group");
+            bloodGroup.requestFocus();
+            return;
+        }
+
+        if(l.isEmpty()) {
+            location.setError("Select your location");
+            location.requestFocus();
+            return;
+        }
+
         if (p.isEmpty()) {
             password.setError("Enter a Password");
             password.requestFocus();
@@ -417,56 +434,78 @@ public class RegistrationActivity extends AppCompatActivity {
         pd.setMessage("Please wait...");
         pd.show();
 
-        mAuth.createUserWithEmailAndPassword(e, p)
-                .addOnCompleteListener(this, task -> {
-                    if (task.isSuccessful()) {
-                        FirebaseUser firebaseUser = mAuth.getCurrentUser();
-                        assert firebaseUser != null;
-
-//                        firebaseUser.sendEmailVerification().addOnCompleteListener(task1 -> {
-//                            if(task1.isSuccessful()){
+//        mAuth.createUserWithEmailAndPassword(e, p)
+//                .addOnCompleteListener(this, task -> {
+//                    if (task.isSuccessful()) {
+//                        FirebaseUser firebaseUser = mAuth.getCurrentUser();
+//                        assert firebaseUser != null;
 //
-//                                Toast.makeText(RegistrationActivity.this, "Check email to verify your account", Toast.LENGTH_LONG).show();
-//                                //                        redirect to login page
-//                                FirebaseAuth.getInstance().signOut();
-//                                startActivity(new Intent(RegistrationActivity.this, LoginActivity.class));
-//                                finish();
-//                            }
-//                            else
-//                            {
-//                                // email not sent, so display message and restart the activity or do whatever you wish to do
-//                                Toast.makeText(RegistrationActivity.this, task1.getException().getMessage(), Toast.LENGTH_LONG).show();
-//                                //restart this activity
-//                                overridePendingTransition(0, 0);
-//                                finish();
-//                                overridePendingTransition(0, 0);
-//                                startActivity(getIntent());
-//                            }
-//                        });
+////                        firebaseUser.sendEmailVerification().addOnCompleteListener(task1 -> {
+////                            if(task1.isSuccessful()){
+////
+////                                Toast.makeText(RegistrationActivity.this, "Check email to verify your account", Toast.LENGTH_LONG).show();
+////                                //                        redirect to login page
+////                                FirebaseAuth.getInstance().signOut();
+////                                startActivity(new Intent(RegistrationActivity.this, LoginActivity.class));
+////                                finish();
+////                            }
+////                            else
+////                            {
+////                                // email not sent, so display message and restart the activity or do whatever you wish to do
+////                                Toast.makeText(RegistrationActivity.this, task1.getException().getMessage(), Toast.LENGTH_LONG).show();
+////                                //restart this activity
+////                                overridePendingTransition(0, 0);
+////                                finish();
+////                                overridePendingTransition(0, 0);
+////                                startActivity(getIntent());
+////                            }
+////                        });
+//
+//                        userID = mAuth.getCurrentUser().getUid();
+//
+//                        DocumentReference documentReference = fstore.collection("users").document(userID);
+//                        Map<String,Object>user = new HashMap<>();
+//                        user.put("name",n);
+//                        user.put("email",e);
+//                        user.put("phone",pn);
+//                        user.put("bloodgroup", bg);
+//                        user.put("division", l);
+//                        user.put("available", false);
+//
+//                        documentReference.set(user).addOnSuccessListener(unused ->
+//                                        Log.d(TAG, "user profile is created for " + userID))
+//                                .addOnFailureListener(ex ->
+//                                        Log.d(TAG, ex.toString()));
+//                        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+//
+//                    } else {
+//                        Toast.makeText(RegistrationActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+//                    }
+//                    pd.dismiss();
+//
+//                });
+        addDatatoFirebase(n, pn, e, bg, l);
+    }
 
-                        userID = mAuth.getCurrentUser().getUid();
+    private void addDatatoFirebase(String n, String pn, String e, String bg, String l) {
+        user.setName(n);
+        user.setPhonenumber(pn);
+        user.setEmail(e);
+        user.setBloodgroup(bg);
+        user.setLocation(l);
+        user.setAvailable(false);
+        userDatabaseRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                userDatabaseRef.setValue(user);
+                Toast.makeText(RegistrationActivity.this, "Data added", Toast.LENGTH_SHORT).show();
+            }
 
-                        DocumentReference documentReference = fstore.collection("users").document(userID);
-                        Map<String,Object>user = new HashMap<>();
-                        user.put("name",n);
-                        user.put("email",e);
-                        user.put("phone",pn);
-                        user.put("bloodgroup", bg);
-                        user.put("division", l);
-                        user.put("available", false);
-
-                        documentReference.set(user).addOnSuccessListener(unused ->
-                                        Log.d(TAG, "user profile is created for " + userID))
-                                .addOnFailureListener(ex ->
-                                        Log.d(TAG, ex.toString()));
-                        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-
-                    } else {
-                        Toast.makeText(RegistrationActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                    }
-                    pd.dismiss();
-
-                });
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(RegistrationActivity.this, "Failed to add data", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void SelectImage()

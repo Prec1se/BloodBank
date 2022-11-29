@@ -45,6 +45,9 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
         holder.emailNow.setVisibility(View.GONE);
         holder.userName.setText(user.getName());
         holder.phoneNumber.setText(user.getPhonenumber());
+        holder.bg.setText(user.getBloodgroup());
+        holder.location.setText(user.getLocation());
+
 //        holder.bg.setText(user.getBloodgroup());
     }
 
@@ -56,7 +59,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public CircleImageView userProfileImage;
-        public TextView userName, userEmail, phoneNumber, bg;
+        public TextView userName, userEmail, phoneNumber, bg, location;
         public Button emailNow;
 
         public ViewHolder(@Nullable View itemView) {
@@ -66,7 +69,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
             userEmail = itemView.findViewById(R.id.email);
             phoneNumber = itemView.findViewById(R.id.phoneNumber);
             emailNow = itemView.findViewById(R.id.emailNow);
-
+            bg = itemView.findViewById(R.id.bloodGroup);
+            location = itemView.findViewById(R.id.division);
         }
     }
 }

@@ -39,7 +39,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:layout_margin="10dp"
-                android:layout_gravity="right"/>
+                android:layout_gravity="right"
+                android:visibility="invisible"/>
 
 
             <androidx.recyclerview.widget.RecyclerView

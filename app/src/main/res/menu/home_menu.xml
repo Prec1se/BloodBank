@@ -63,9 +63,18 @@
                     android:icon="@drawable/ic_person"
                     android:title="Profile"/>
                 <item
+                    android:id="@+id/status"
+                    android:icon="@drawable/ic_drop"
+                    android:title="Status"/>
+                <item
                     android:id="@+id/notifications"
                     android:icon="@drawable/ic_notifications"
                     android:title="Notifications"/>
+                <item
+                    android:id="@+id/search"
+                    android:icon="@drawable/ic_search"
+                    android:title="Search Donor"
+                    />
                 <item
                     android:id="@+id/logout"
                     android:icon="@drawable/ic_logout"
@@ -86,6 +95,14 @@
                     android:id="@+id/share"
                     android:icon="@drawable/ic_share"
                     android:title="Share"/>
+                <item
+                    android:id="@+id/feedback"
+                    android:icon="@drawable/ic_feedback"
+                    android:title="Feedback"/>
+                <item
+                    android:id="@+id/help"
+                    android:icon="@drawable/ic_help"
+                    android:title="Donate Us"/>
 
             </group>
         </menu>
